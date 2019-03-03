@@ -14,10 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include <iostream>
-#include "src/dnn/Linear.h"
+#include "Linear.h"
+#include <gtest/gtest.h>
 
-int main() {
+TEST(LINEAR, FIRST){
     dnn();
-    return 0;
 }

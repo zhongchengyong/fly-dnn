@@ -14,10 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+#include "Linear.h"
 #include <iostream>
-#include "src/dnn/Linear.h"
-
-int main() {
-    dnn();
-    return 0;
+void dnn(){
+    std::cout << "Hello, dnn" << std::endl;
 }
