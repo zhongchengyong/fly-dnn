@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.12)
 project(fly_dnn)
 
 set(CMAKE_CXX_STANDARD 14)
-
 add_subdirectory(src/dnn)
 add_subdirectory(third_party/glog)
 

@@ -20,24 +20,20 @@ limitations under the License.
 #include "blob.h"
 
 namespace dnn {
-    template<typename DType>
-    Blob<DType>::Blob(const int batch, const int channels, const int height, const int width) {
+    Blob::Blob(const int batch, const int channels, const int height, const int width) {
         Init();
         Reshape(batch, channels, height, width);
     }
 
-    template<typename DType>
-    Blob<DType>::Blob(const vector<int> &shape) {
+    Blob::Blob(const vector<int> &shape) {
 
     }
 
-    template<typename DType>
-    void Blob<DType>::Init() {
+    void Blob::Init() {
 
     }
 
-    template<typename DType>
-    bool Blob<DType>::Reshape(int batch, int channels, int height, int width) {
+    bool Blob::Reshape(int batch, int channels, int height, int width) {
         int_vec shape(4);
         shape[0] = batch;
         shape[1] = channels;
@@ -46,32 +42,33 @@ namespace dnn {
         return Reshape(shape);
     }
 
-    template<typename DType>
-    bool Blob<DType>::Reshape(const int_vec &shape) {
-        this->shape = make_shared<int_vec>(shape);
+    bool Blob::Reshape(const int_vec &shape) {
+        this->shape_ = make_shared<int_vec>(shape);
         return true;
     }
 
-    template<typename DType>
-    DType *Blob<DType>::GetData() {
-        return static_cast<const DType*>(data_);
+    d_vec *Blob::GetData() {
+        return data_.get();
     }
 
-    template<typename DType>
-    DType *Blob<DType>::GetGradient() {
-        return static_cast<const DType*>(diff_);
+    d_vec *Blob::GetGradient() {
+        return diff_.get();
     }
 
-    template<typename DType>
-    void Blob<DType>::Clear() {
+    void Blob::Clear() {
         this->data_ = nullptr;
         this->diff_ = nullptr;
     }
 
-    template<typename DType>
-    void Blob<DType>::Update() {
+    void Blob::Update() {
 
     }
 
+    int_vec * Blob::GetShape() {
+        return shape_.get();
+    }
 
+    void TempTest::test() {
+
+    }
 } // namespace dnn

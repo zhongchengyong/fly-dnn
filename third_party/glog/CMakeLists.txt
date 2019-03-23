@@ -46,9 +46,10 @@ include (GNUInstallDirs)
 
 set (CMAKE_DEBUG_POSTFIX d)
 set (CMAKE_THREAD_PREFER_PTHREAD 1)
+find_package(gflags REQUIRED)
 
 if (WITH_GFLAGS)
-  find_package (gflags 2.2.0)
+  find_package (gflags 2.2.2)
 
   if (gflags_FOUND)
     set (HAVE_LIB_GFLAGS 1)
