@@ -14,16 +14,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include <iostream>
-#include "src/dnn/linear.h"
-#include "src/dnn/node.h"
-#include <stdio.h>
+#ifndef FLY_DNN_LINEAR_H
+#define FLY_DNN_LINEAR_H
 
-int main() {
-    dnnFunction();
-    char c;
-    while ((c = getchar()) != EOF) {
-        putchar(c);
-    }
-    return 0;
-}
+void dnnFunction();
+
+class linear {
+
+};
+
+
+#endif //FLY_DNN_LINEAR_H

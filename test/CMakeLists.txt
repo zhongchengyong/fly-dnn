@@ -4,6 +4,6 @@ aux_source_directory(. TEST_DIR)
 
 add_executable(unit_tests ${TEST_DIR})
 
-target_link_libraries(unit_tests GTest::GTest GTest::Main dnn)
+target_link_libraries(unit_tests GTest::GTest GTest::Main dnn glog::glog)
 
 # To run google test by filter, use --gtest_fileter=xxx*

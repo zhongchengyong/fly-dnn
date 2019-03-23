@@ -14,9 +14,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include "Linear.h"
-#include <gtest/gtest.h>
+#include "node.h"
 
-TEST(LINEAR, FIRST){
-    dnn();
+std::size_t dnn::node::prevPort(const dnn::Edge &e) const {
+    auto it = std::find_if(prev_.begin(), prev_.end(), [&](edgeptr_t ep) { return ep.get() == &e; });
+    return static_cast<size_t>(std::distance(prev_.begin(), it));
+}
+
+std::size_t dnn::node::nextPort(const dnn::Edge &e) const {
+    auto it = std::find_if(next_.begin(), next_.end(), [&](edgeptr_t ep){ return ep.get() == &e;});
+    return static_cast<size_t>(std::distance(next_.begin(), it));
 }

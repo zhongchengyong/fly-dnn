@@ -14,16 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+#include "linear.h"
 #include <iostream>
-#include "src/dnn/linear.h"
-#include "src/dnn/node.h"
-#include <stdio.h>
-
-int main() {
-    dnnFunction();
-    char c;
-    while ((c = getchar()) != EOF) {
-        putchar(c);
-    }
-    return 0;
+void dnnFunction(){
+    std::cout << "Hello, dnn" << std::endl;
 }

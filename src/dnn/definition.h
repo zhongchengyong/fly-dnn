@@ -14,14 +14,26 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#ifndef FLY_DNN_LINEAR_H
-#define FLY_DNN_LINEAR_H
+#ifndef FLY_DNN_DEFINITION_H
+#define FLY_DNN_DEFINITION_H
 
-void dnn();
-
-class Linear {
-
-};
+#include <vector>
 
 
-#endif //FLY_DNN_LINEAR_H
+typedef std::vector<double> d_vec;
+typedef std::vector<int> int_vec;
+typedef unsigned int uint_t;
+
+
+
+
+namespace dnn {
+    //Common functions and classes from std and boost that framework often uses.
+    using std::fstream;
+    using std::ios;
+    using std::vector;
+    using std::shared_ptr;
+    using std::make_shared;
+} // namespace dnn
+
+#endif //FLY_DNN_DEFINITION_H
