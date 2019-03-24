@@ -1,33 +1,48 @@
-//
-// Created by 钟乘永 on 2019-03-23.
-//
+/*
+Copyright [2019] [kode]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 
 #include "blob.h"
 #include <gtest/gtest.h>
 
 namespace dnn {
 
+    template<typename DType>
     class BlobTest : public testing::Test {
     public:
-        BlobTest() : blob_(new Blob()), shaped_blob_(new Blob(1)), tempTest(new TempTest()) {
-//            shaped_blob_(new Blob());
-//            shaped_blob_->Reshape(2, 3, 4, 5);
-            tempTest->test();
-        };
+        BlobTest() : blob_(new Blob<DType>()), shaped_blob_(new Blob<DType>(2, 3, 4, 5)) {}
 
-        Blob *const blob_;
-        TempTest *tempTest;
-        Blob *const shaped_blob_;
+        Blob<DType> *const blob_;
+        Blob<DType> *const shaped_blob_;
     };
 
-//    TYPED_TEST_CASE(BlobTest, int_vec);
+    TYPED_TEST_CASE(BlobTest, double);
 
-    TEST(BlobTest, INIT) {
-        Blob* blob = new Blob(2, 3, 4, 5);
+    TYPED_TEST(BlobTest, INIT) {
+        EXPECT_EQ(this->shaped_blob_->GetNums(), 2);
+        EXPECT_EQ(this->shaped_blob_->GetChannels(), 3);
+        EXPECT_EQ(this->shaped_blob_->GetHeight(), 4);
+        EXPECT_EQ(this->shaped_blob_->GetWidth(), 5);
 
-       EXPECT_EQ(blob->GetNums(), 2);
-       EXPECT_EQ(blob->GetChannels(), 3);
-       EXPECT_EQ(blob->GetHeight(), 4);
-       EXPECT_EQ(blob->GetWidth(), 5);
+        EXPECT_FALSE(this->shaped_blob_->GetData());
+        EXPECT_FALSE(this->shaped_blob_->GetGradient());
+
+        int_vec shape{2, 3, 4, 5};
+        EXPECT_EQ(*(this->shaped_blob_->GetShape()), shape);
+
+        this->shaped_blob_->Clear();
+        EXPECT_EQ(this->shaped_blob_->GetData(), nullptr);
     }
 } // namespace dnn

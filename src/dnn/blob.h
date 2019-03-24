@@ -23,17 +23,19 @@ limitations under the License.
 
 #include "definition.h"
 #include <memory>
+#include "macros.h"
+
+
 namespace dnn {
+    template <typename DType>
     class Blob {
     public:
         //Tips: 在函数声明时不使用const int，而是在函数定义的时候使用const int，只有在定义时使用const int才有效
-        Blob(){};
+        Blob<DType>(){};
 
-        Blob(int batch){};
+        Blob<DType>(int batch, int channels, int height, int width);
 
-        Blob(int batch, int channels, int height, int width);
-
-        Blob(const vector<int>& shape);
+        Blob<DType>(const vector<int>& shape);
 
         void Init();
 
@@ -41,9 +43,9 @@ namespace dnn {
 
         bool Reshape(const int_vec &shape);
 
-        d_vec *GetData();
+        vector<DType> *GetData();
 
-        d_vec *GetGradient();
+        vector<DType> *GetGradient();
 
         void Clear();
 
@@ -68,18 +70,14 @@ namespace dnn {
         }
 
     protected:
-        shared_ptr<d_vec> data_;
-        shared_ptr<d_vec> diff_;
+        shared_ptr<vector<DType>> data_;
+        shared_ptr<vector<DType>> diff_;
         shared_ptr<int_vec> shape_;
 
         uint_t count_;
         uint_t capacity_;
     };
 
-    class TempTest{
-    public:
-        void test();
-    };
 }; // namespace dnn
 
 
