@@ -4,5 +4,7 @@ project(dnn)
 set(CMAKE_CXX_STANDARD 14)
 
 aux_source_directory(. DNN)
+aux_source_directory(./layers LAYERS)
+aux_source_directory(./params, PARAMS)
 
-add_library(dnn SHARED ${DNN})
+add_library(dnn SHARED ${DNN} ${LAYERS} ${PARAMS})

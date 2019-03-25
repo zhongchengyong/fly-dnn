@@ -14,9 +14,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include "linear.h"
-#include <gtest/gtest.h>
-
-TEST(LINEAR, FIRST){
-    dnnFunction();
-}
+#include "convolution_layer.h"

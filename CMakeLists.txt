@@ -3,7 +3,7 @@ project(fly_dnn)
 
 set(CMAKE_CXX_STANDARD 14)
 
-find_package(GTest REQUIRED)
+option(BUILD_TESTS "Set to ON to build tests" ON)
 
 find_package(Boost REQUIRED)
 
@@ -11,15 +11,17 @@ if (NOT Boost_FOUND)
     MESSAGE("Boost not found")
 endif ()
 
+include_directories(src)
 include_directories(${Boost_INCLUDE_DIRS})
-message("${Boost_INCLUDE_DIRS}")
-message("${Boost_LIBRARIES}")
-
-enable_testing()
 
 add_subdirectory(src/dnn)
 add_subdirectory(third_party/glog)
-add_subdirectory(test)
+
+if (BUILD_TESTS)
+    find_package(GTest REQUIRED)
+    enable_testing()
+    add_subdirectory(test)
+endif (BUILD_TESTS)
 
 add_executable(fly_dnn main.cpp)
 

@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include "blob.h"
+#include "dnn/blob.h"
 #include <gtest/gtest.h>
 
 namespace dnn {
@@ -28,7 +28,8 @@ namespace dnn {
         Blob<DType> *const shaped_blob_;
     };
 
-    TYPED_TEST_CASE(BlobTest, double);
+    typedef testing::Types<double, float> BlobType;
+    TYPED_TEST_CASE(BlobTest, BlobType);
 
     TYPED_TEST(BlobTest, INIT) {
         EXPECT_EQ(this->shaped_blob_->GetNums(), 2);
