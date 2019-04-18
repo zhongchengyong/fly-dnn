@@ -7,4 +7,4 @@ aux_source_directory(. DNN)
 aux_source_directory(./layers LAYERS)
 aux_source_directory(./params, PARAMS)
 
-add_library(dnn SHARED ${DNN} ${LAYERS} ${PARAMS})
+add_library(dnn SHARED ${DNN} ${LAYERS} ${PARAMS} utility/logger.cpp utility/logger.h)

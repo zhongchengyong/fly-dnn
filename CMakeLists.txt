@@ -15,7 +15,6 @@ include_directories(src)
 include_directories(${Boost_INCLUDE_DIRS})
 
 add_subdirectory(src/dnn)
-add_subdirectory(third_party/glog)
 
 if (BUILD_TESTS)
     find_package(GTest REQUIRED)
@@ -25,4 +24,4 @@ endif (BUILD_TESTS)
 
 add_executable(fly_dnn main.cpp)
 
-target_link_libraries(fly_dnn dnn glog::glog ${Boost_LIBRARIES})
+target_link_libraries(fly_dnn dnn ${Boost_LIBRARIES})

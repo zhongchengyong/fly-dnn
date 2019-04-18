@@ -18,6 +18,8 @@ limitations under the License.
 #define FLY_DNN_DEFINITION_H
 
 #include <vector>
+#include <iostream>
+#include <memory>
 
 
 typedef std::vector<double> d_vec;
