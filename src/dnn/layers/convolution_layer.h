@@ -19,6 +19,7 @@ limitations under the License.
 
 #include "layer.h"
 #include "dnn/util.h"
+#include "dnn/params/convolution_param.h"
 #include <vector>
 
 template<typename DType, typename IType, typename OType>

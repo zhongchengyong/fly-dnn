@@ -4,14 +4,6 @@
 
 #ifndef FLY_DNN_UTIL_H
 #define FLY_DNN_UTIL_H
-
-#include "glog/logging.h"
-
-
-
-
-#endif //FLY_DNN_UTIL_H
-
 /**
  * Padding include valid and same.
  */
@@ -39,3 +31,7 @@ struct Shape {
     T height_;
     T width_;
 };
+
+
+#endif //FLY_DNN_UTIL_H
+

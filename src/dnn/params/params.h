@@ -6,10 +6,13 @@
 #define FLY_DNN_PARAMS_H
 
 namespace dnn {
+    class ConvolutionParam;
 
     class Params {
     public:
         Params(){}
+
+        virtual ConvolutionParam& Conv() = 0;
     };
 }
 
