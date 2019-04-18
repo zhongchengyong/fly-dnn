@@ -11,13 +11,15 @@ using namespace dnn;
 
 class ConvolutionParamTest : public ::testing::Test {
 public:
+    void SetUp() override{
+        conv_param.kernel_w = 10;
+    }
     ConvolutionParamTest() = default;
 
     ConvolutionParam conv_param;
 };
 
 TEST_F(ConvolutionParamTest, OPERATOR) {
-    conv_param.kernel_w = 1;
     conv_param.kernel_h = 1;
     std::cout << conv_param;
 }
